@@ -39,7 +39,7 @@
           <template #icon><AppstoreOutlined /></template>
           <span>分类管理</span>
         </a-menu-item>
-        <a-menu-item key="statistics">
+        <a-menu-item key="reports">
           <template #icon><BarChartOutlined /></template>
           <span>统计报表</span>
         </a-menu-item>
@@ -133,7 +133,7 @@ const currentTitle = computed(() => {
     readers: '读者管理',
     borrow: '借阅管理',
     categories: '分类管理',
-    statistics: '统计报表'
+    reports: '统计报表'
   }
   return titles[selectedKeys.value[0]] || ''
 })

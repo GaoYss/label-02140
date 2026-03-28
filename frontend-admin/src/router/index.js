@@ -43,9 +43,9 @@ const routes = [
         meta: { title: '分类管理', icon: 'AppstoreOutlined' }
       },
       {
-        path: 'statistics',
-        name: 'Statistics',
-        component: () => import('@/views/statistics/Statistics.vue'),
+        path: 'reports',
+        name: 'Reports',
+        component: () => import('@/views/reports/Reports.vue'),
         meta: { title: '统计报表', icon: 'BarChartOutlined' }
       }
     ]

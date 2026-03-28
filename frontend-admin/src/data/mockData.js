@@ -340,6 +340,67 @@ export const borrowRecords = [
 ]
 
 // ========================================
+// 统计报表数据
+// ========================================
+
+// 月度借阅数据
+export const monthlyBorrowData = [
+  { month: '1月', borrowCount: 128, returnCount: 115 },
+  { month: '2月', borrowCount: 98, returnCount: 102 },
+  { month: '3月', borrowCount: 156, returnCount: 142 },
+  { month: '4月', borrowCount: 189, returnCount: 175 },
+  { month: '5月', borrowCount: 203, returnCount: 188 },
+  { month: '6月', borrowCount: 176, returnCount: 168 },
+  { month: '7月', borrowCount: 245, returnCount: 230 },
+  { month: '8月', borrowCount: 267, returnCount: 252 },
+  { month: '9月', borrowCount: 218, returnCount: 205 },
+  { month: '10月', borrowCount: 195, returnCount: 182 },
+  { month: '11月', borrowCount: 178, returnCount: 165 },
+  { month: '12月', borrowCount: 225, returnCount: 210 }
+]
+
+// 季度借阅数据
+export const quarterlyBorrowData = [
+  { quarter: 'Q1', borrowCount: 382, returnCount: 359 },
+  { quarter: 'Q2', borrowCount: 568, returnCount: 531 },
+  { quarter: 'Q3', borrowCount: 730, returnCount: 687 },
+  { quarter: 'Q4', borrowCount: 598, returnCount: 557 }
+]
+
+// 年度借阅数据
+export const yearlyBorrowData = [
+  { year: '2020', borrowCount: 1856, returnCount: 1782 },
+  { year: '2021', borrowCount: 2134, returnCount: 2056 },
+  { year: '2022', borrowCount: 2456, returnCount: 2389 },
+  { year: '2023', borrowCount: 2890, returnCount: 2785 },
+  { year: '2024', borrowCount: 2278, returnCount: 2134 }
+]
+
+// 图书热度排行榜
+export const bookHotRanking = [
+  { rank: 1, title: '红楼梦', author: '曹雪芹', borrowCount: 156, cover: hlmCover },
+  { rank: 2, title: 'JavaScript高级程序设计', author: 'Nicholas C. Zakas', borrowCount: 142, cover: jsCover },
+  { rank: 3, title: '三国演义', author: '罗贯中', borrowCount: 128, cover: sgyyCover },
+  { rank: 4, title: 'Vue.js设计与实现', author: '霍春阳', borrowCount: 115, cover: vueCover },
+  { rank: 5, title: '经济学原理', author: '曼昆', borrowCount: 98, cover: jjxCover },
+  { rank: 6, title: '史记', author: '司马迁', borrowCount: 87, cover: sjCover },
+  { rank: 7, title: '设计心理学', author: '唐纳德·诺曼', borrowCount: 76, cover: xlxCover },
+  { rank: 8, title: '高等数学', author: '同济大学数学系', borrowCount: 65, cover: sxCover }
+]
+
+// 读者活跃度分析
+export const readerActivityData = [
+  { rank: 1, name: '钱七', department: '历史学院', borrowCount: 45, type: '教师' },
+  { rank: 2, name: '李四', department: '文学院', borrowCount: 38, type: '教师' },
+  { rank: 3, name: '张三', department: '计算机学院', borrowCount: 32, type: '学生' },
+  { rank: 4, name: '王五', department: '经济学院', borrowCount: 28, type: '学生' },
+  { rank: 5, name: '赵六', department: '艺术学院', borrowCount: 22, type: '学生' },
+  { rank: 6, name: '孙八', department: '理学院', borrowCount: 19, type: '学生' },
+  { rank: 7, name: '周九', department: '工学院', borrowCount: 16, type: '教师' },
+  { rank: 8, name: '吴十', department: '医学院', borrowCount: 14, type: '学生' }
+]
+
+// ========================================
 // 测试用户账号
 // ========================================
 export const users = [
