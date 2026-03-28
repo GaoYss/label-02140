@@ -39,6 +39,10 @@
           <template #icon><AppstoreOutlined /></template>
           <span>分类管理</span>
         </a-menu-item>
+        <a-menu-item key="statistics">
+          <template #icon><BarChartOutlined /></template>
+          <span>统计报表</span>
+        </a-menu-item>
       </a-menu>
     </a-layout-sider>
 
@@ -106,6 +110,7 @@ import {
   UserOutlined,
   SwapOutlined,
   AppstoreOutlined,
+  BarChartOutlined,
   DownOutlined,
   LogoutOutlined
 } from '@ant-design/icons-vue'
@@ -127,7 +132,8 @@ const currentTitle = computed(() => {
     books: '图书管理',
     readers: '读者管理',
     borrow: '借阅管理',
-    categories: '分类管理'
+    categories: '分类管理',
+    statistics: '统计报表'
   }
   return titles[selectedKeys.value[0]] || ''
 })
