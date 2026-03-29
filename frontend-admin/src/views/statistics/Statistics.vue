@@ -60,17 +60,24 @@
           <div class="card-body chart-container">
             <div class="pie-chart-placeholder">
               <div class="pie-chart">
-              <div class="pie-slice" v-for="(item, index) in categoryPieData" :key="index" 
+              <div 
+                v-for="(item, index) in computedPieData" 
+                :key="index" 
+                class="pie-segment"
                 :style="{
                   transform: `rotate(${item.startAngle}deg)`,
-                  clip: item.angle > 180 ? 'rect(0, 100px, 100px, 0px)' : 'rect(0, 100px, 100px, 50px)'
-                }">
-                <div class="pie-slice-inner" 
+                  zIndex: computedPieData.length - index
+                }"
+              >
+                <div 
+                  class="pie-segment-fill"
                   :style="{
                     transform: `rotate(${item.angle}deg)`,
                     backgroundColor: getPieColor(index)
-                  }"></div>
+                  }"
+                ></div>
               </div>
+              <div class="pie-center"></div>
             </div>
               <div class="pie-legend">
                 <div v-for="(item, index) in categoryPieData" :key="index" class="legend-item">
@@ -286,12 +293,25 @@ const borrowTrendData = ref([
 ])
 
 const categoryPieData = ref([
-  { name: '文学小说', value: 35, percentage: 35, startAngle: 0, angle: 126 },
-  { name: '科技编程', value: 25, percentage: 25, startAngle: 126, angle: 90 },
-  { name: '历史传记', value: 18, percentage: 18, startAngle: 216, angle: 64.8 },
-  { name: '经济管理', value: 12, percentage: 12, startAngle: 280.8, angle: 43.2 },
-  { name: '艺术设计', value: 10, percentage: 10, startAngle: 324, angle: 36 }
+  { name: '文学小说', value: 35, percentage: 35, angle: 126 },
+  { name: '科技编程', value: 25, percentage: 25, angle: 90 },
+  { name: '历史传记', value: 18, percentage: 18, angle: 64.8 },
+  { name: '经济管理', value: 12, percentage: 12, angle: 43.2 },
+  { name: '艺术设计', value: 10, percentage: 10, angle: 36 }
 ])
+
+// 计算饼图起始角度
+const computedPieData = computed(() => {
+  let startAngle = 0
+  return categoryPieData.value.map(item => {
+    const currentAngle = startAngle
+    startAngle += item.angle
+    return {
+      ...item,
+      startAngle: currentAngle
+    }
+  })
+})
 
 const hotBooks = ref([
   { id: 1, title: '红楼梦', author: '曹雪芹', borrowCount: 156, rating: 4.9, cover: DEFAULT_COVERS[0] },
@@ -610,21 +630,35 @@ function handleExport() {
       height: 150px;
       border-radius: 50%;
       position: relative;
-      overflow: hidden;
       margin-bottom: 20px;
 
-      .pie-slice {
+      .pie-segment {
         position: absolute;
         width: 100%;
         height: 100%;
-        clip: rect(0, 100px, 100px, 50px);
+        border-radius: 50%;
+        clip: rect(0, 150px, 150px, 75px);
 
-        .pie-slice-inner {
+        .pie-segment-fill {
           position: absolute;
           width: 100%;
           height: 100%;
           border-radius: 50%;
+          background-color: inherit;
+          clip: rect(0, 75px, 150px, 0);
+          transform-origin: 50% 50%;
         }
+      }
+
+      .pie-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60%;
+        height: 60%;
+        background-color: #fff;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
       }
     }
 
