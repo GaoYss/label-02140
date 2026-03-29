@@ -60,18 +60,18 @@
           <div class="card-body chart-container">
             <div class="pie-chart-placeholder">
               <div class="pie-chart">
-                <div class="pie-slice" v-for="(item, index) in categoryPieData" :key="index" 
+              <div class="pie-slice" v-for="(item, index) in categoryPieData" :key="index" 
+                :style="{
+                  transform: `rotate(${item.startAngle}deg)`,
+                  clip: item.angle > 180 ? 'rect(0, 100px, 100px, 0px)' : 'rect(0, 100px, 100px, 50px)'
+                }">
+                <div class="pie-slice-inner" 
                   :style="{
-                    transform: `rotate(${item.startAngle}deg)`,
-                    clip: `rect(0, 100px, 100px, 50px)`
-                  }">
-                  <div class="pie-slice-inner" 
-                    :style="{
-                      transform: `rotate(${item.angle}deg)`,
-                      backgroundColor: getPieColor(index)
-                    }"></div>
-                </div>
+                    transform: `rotate(${item.angle}deg)`,
+                    backgroundColor: getPieColor(index)
+                  }"></div>
               </div>
+            </div>
               <div class="pie-legend">
                 <div v-for="(item, index) in categoryPieData" :key="index" class="legend-item">
                   <span class="legend-color" :style="{background: getPieColor(index)}"></span>
@@ -629,25 +629,32 @@ function handleExport() {
     }
 
     .pie-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 10px;
+      max-width: 100%;
 
       .legend-item {
         display: flex;
         align-items: center;
         gap: 6px;
-        font-size: 12px;
+        font-size: 11px;
+        min-width: 0;
 
         .legend-color {
-          width: 12px;
-          height: 12px;
+          width: 10px;
+          height: 10px;
           border-radius: 2px;
+          flex-shrink: 0;
         }
 
         .legend-text {
           color: #666;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          min-width: 0;
         }
       }
     }
